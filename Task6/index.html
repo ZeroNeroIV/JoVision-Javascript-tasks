@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page Title</title>
+    <script>
+        function on_page_load() {
+            function create_new_array() {
+                const arr = [];
+
+                for (let i = 1; i < 100; i++) {
+                    arr.push(i);
+                }
+
+                return arr;
+            }
+
+            function on_click_a() {
+                const arr = create_new_array();
+
+                function not_divisible_by_3(e) {
+                    return e % 3 !== 0;
+                }
+
+                arr.filter(not_divisible_by_3);
+
+                console.log(arr);
+            }
+
+            function on_click_b() {
+                const arr = create_new_array();
+
+                for (let i = 100; i <= 150; i++) {
+                    arr.push(i);
+                }
+
+                console.log(arr);
+            }
+
+            function on_click_c() {
+                const arr = create_new_array();
+
+                function add_3_to_entries(e) {
+                    return e + 3;
+                }
+
+                console.log(arr.map(add_3_to_entries));
+            }
+
+            function on_click_d() {
+                const arr = create_new_array();
+
+                console.log(arr.slice(20, 40));
+            }
+
+            function on_click_e() {
+                const arr = create_new_array();
+
+                // Provided shuffle function from the hints
+                function shuffleArray(array) {
+                    for (let i = array.length - 1; i > 0; i--) {
+                        let j = Math.floor(Math.random() * (i + 1));
+                        [array[i], array[j]] = [array[j], array[i]];
+                    }
+                }
+
+                function descending_sort(a, b) {
+                    // if b > a, then b - a > 0, so b comes before a
+                    // if b < a, then b - a < 0, so a comes before b
+                    // if b = a, then b - a = 0, so the order is unchanged
+                    return b - a;
+                }
+
+                shuffleArray(arr);
+
+                console.log("Shuffled array:\n" + arr);
+
+                arr.sort(descending_sort);
+
+                console.log("Sorted (decsendingly) array:\n" + arr);
+
+            }
+
+            const body = document.querySelector('body');
+
+            const btn_a = document.createElement('button');
+            btn_a.textContent = 'Button A';
+            btn_a.addEventListener('click', on_click_a);
+
+            const btn_b = document.createElement('button');
+            btn_b.textContent = 'Button B';
+            btn_b.addEventListener('click', on_click_b);
+
+            const btn_c = document.createElement('button');
+            btn_c.textContent = 'Button C';
+            btn_c.addEventListener('click', on_click_c);
+
+            const btn_d = document.createElement('button');
+            btn_d.textContent = 'Button D';
+            btn_d.addEventListener('click', on_click_d);
+
+            const btn_e = document.createElement('button');
+            btn_e.textContent = 'Button E';
+            btn_e.addEventListener('click', on_click_e);
+
+            body.append(btn_a, btn_b, btn_c, btn_d, btn_e);
+        }
+
+        window.addEventListener('load', on_page_load);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
