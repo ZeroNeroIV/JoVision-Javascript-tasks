@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Task 7</title>
+    <script>
+        function on_page_load() {
+            const body = document.querySelector('body');
+
+            const t = document.createElement('h1');
+
+            function update_time() {
+                const curr_time = new Date();
+
+                let hours = curr_time
+                    .getHours()
+                    .toString()
+                    .padStart(2, '0');
+                let minutes = curr_time
+                    .getMinutes()
+                    .toString()
+                    .padStart(2, '0');
+                let seconds = curr_time
+                    .getSeconds()
+                    .toString()
+                    .padStart(2, '0');
+
+                t.textContent =
+                    `${hours}:${minutes}:${seconds}`;
+            }
+
+            body.appendChild(t);
+
+            setInterval(update_time, 1000);
+        }
+
+
+        window.addEventListener('load', on_page_load);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
