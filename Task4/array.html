@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page Title</title>
+    <script>
+        function on_page_load() {
+            function on_click() {
+                function get_array_sum(a, b) {
+                    return a + b;
+                }
+
+                const arr = [];
+
+                for (let i = 1; i < 100; i++) {
+                    arr.push(i);
+                }
+
+                console.log(arr.reduce(get_array_sum));
+            }
+
+            let body = document.querySelector('body');
+
+            let btn = document.createElement('button');
+            btn.textContent = 'Click me';
+            btn.addEventListener('click', on_click);
+
+            body.appendChild(btn);
+        }
+
+        window.addEventListener('load', on_page_load);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
