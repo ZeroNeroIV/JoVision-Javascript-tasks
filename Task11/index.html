@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Task 10</title>
+    <title>Task 11</title>
     <script>
         function on_page_load() {
             const body = document.querySelector('body');
@@ -16,9 +16,14 @@
                     e.target.textContent = data.ip;
                 }
 
-                fetch('https://api.ipify.org?format=json')
+                function handle_exception(e) {
+                    window.alert(`Error: ${e}`);
+                }
+
+                fetch('https://api.ipify.orgx?format=json')
                     .then(first_then)
-                    .then(second_then);
+                    .then(second_then)
+                    .catch(handle_exception);
             }
 
             const btn = document.createElement('button');
