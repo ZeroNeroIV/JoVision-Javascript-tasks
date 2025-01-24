@@ -7,6 +7,11 @@
         function on_page_load() {
             function on_click_submission(e) {
                 const original_name = name_text_field.value;
+                const reg = /[A-Za-z]/gm;
+                if (!reg.test(original_name)) {
+                    window.alert('Please enter a valid name.');
+                    return;
+                }
 
                 function first_then(response) {
                     return response.json();

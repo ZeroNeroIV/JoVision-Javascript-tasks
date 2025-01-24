@@ -9,6 +9,22 @@
                 const original_name = name_text_field.value;
                 const original_age = age_text_field.value;
                 const original_timestamp = new Date().getTime();
+                const reg = /[A-Za-z]/gm;
+
+                if (original_name === '' || original_age === '') {
+                    window.alert('Please fill in all fields.');
+                    return;
+                }
+
+                if (!reg.test(original_name)) {
+                    window.alert('Please enter a valid name.');
+                    return;
+                }
+
+                if (original_age < 0 || original_age > 150) {
+                    window.alert('Please enter a valid age.');
+                    return;
+                }
 
                 const data_object = {
                     name: original_name,
