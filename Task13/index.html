@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Task 13</title>
+    <script>
+        function on_page_load() {
+            function on_click_submission(e) {
+                const original_name = name_text_field.value;
+
+                function first_then(response) {
+                    return response.json();
+                }
+
+                function second_then(data) {
+                    const name = data.name;
+                    const age = data.age;
+
+                    window.alert(`Your name is: ${name}\n` +
+                        `Your age is: ${age}`);
+                }
+
+                fetch(`https://api.agify.io?name=${original_name}`)
+                    .then(first_then)
+                    .then(second_then);
+            }
+
+            const body = document.body;
+
+            const name_text_field = document.createElement('input');
+            name_text_field.setAttribute('type', 'text');
+            name_text_field.placeholder = 'Name';
+            name_text_field.title = 'Name';
+
+            const submit_button = document.createElement('button');
+            submit_button.textContent = 'Submit';
+            submit_button.onclick = on_click_submission;
+
+            const br = document.createElement('br');
+
+            body.append(name_text_field, br, submit_button);
+        }
+
+        window.onload = on_page_load;
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

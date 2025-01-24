@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Task 10</title>
+    <script>
+        function on_page_load() {
+            const body = document.querySelector('body');
+
+            function request_data_get_ip(e) {
+                function first_then(response) {
+                    return response.json();
+                }
+
+                function second_then(data) {
+                    e.target.textContent = data.ip;
+                }
+
+                fetch('https://api.ipify.org?format=json')
+                    .then(first_then)
+                    .then(second_then);
+            }
+
+            const btn = document.createElement('button');
+            btn.textContent = 'Get IP';
+            btn.addEventListener('click', request_data_get_ip);
+
+            body.appendChild(btn);
+        }
+
+        window.addEventListener('load', on_page_load);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
