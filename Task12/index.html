@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Task 12</title>
+    <script>
+        function on_page_load() {
+            function on_click_submission(e) {
+                const original_name = name_text_field.value;
+                const original_age = age_text_field.value;
+                const original_timestamp = new Date().getTime();
+
+                const data_object = {
+                    name: original_name,
+                    age: original_age,
+                    timestamp: original_timestamp
+                };
+
+                const { name, age, timestamp } = data_object;
+
+                window.alert(`Your name is: ${name}\n` +
+                    `Your age is: ${age}\n` +
+                    `At ${timestamp}`);
+            }
+
+            const body = document.body;
+
+            const name_text_field = document.createElement('input');
+            name_text_field.setAttribute('type', 'text');
+            name_text_field.placeholder = 'Name';
+            name_text_field.title = 'Name';
+
+            const age_text_field = document.createElement('input');
+            age_text_field.setAttribute('type', 'number');
+            age_text_field.placeholder = 'Age';
+            age_text_field.title = 'Age';
+
+            const submit_button = document.createElement('button');
+            submit_button.textContent = 'Submit';
+            submit_button.onclick = on_click_submission;
+
+            const br = document.createElement('br');
+
+            body.append(name_text_field, age_text_field, br, submit_button);
+        }
+
+        window.onload = on_page_load;
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
